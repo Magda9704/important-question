@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Very important question</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #df2f5e, #ea7e92);
+      font-family: 'Trebuchet MS', cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #app {
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    h1 {
+  font-size: 3rem;
+}
+p {
+  font-size: 2rem;
+}
+
+    .button {
+      padding: 15px 30px;
+      font-size: 24px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: white;
+      color: #ff3366;
+      transition: transform 0.2s;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+    }
+
+    .floating-heart {
+      position: absolute;
+      color: red;
+      font-size: 40px;
+      animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div id="screen">
+      <h1>Hi Yasmine 💗</h1>
+      <p>I think it's time to take our relationship to the next level...</p>
+      <button class="button" onclick="startApp()">Click here</button>
+    </div>
+  </div>
+
+  <script>
+    function startApp() {
+      const screen = document.getElementById('screen');
+      screen.innerHTML = `
+        <h1>🤍 Will you be my girlfriend? 🤍</h1>
+        (you can choose no, but please don't)</p>
+        <div class="options">
+          <button class="button" onclick="showCongrats()">Yes</button>
+          <button class="button" disabled>No</button>
+        </div>
+      `;
+    }
+
+    function showCongrats() {
+      const screen = document.getElementById('screen');
+      screen.innerHTML = `
+        <h1> She said YES! <br><br>
+       Bubu, we are now officially a couple❤️</h1>
+      `;
+      launchHearts();
+    }
+
+    function launchHearts() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.innerHTML = '❤️';
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+      }
+    }
+  </script>
+</body>
+</html>
